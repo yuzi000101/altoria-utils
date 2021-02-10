@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../../../dist/altoria_utils.js"></script>
+    <script>
+        const pQueue = new aUtils.PriorityQueue()
+        pQueue.enqueue('tom', 10)
+        pQueue.enqueue('jack', 5)
+        pQueue.enqueue('rose', 12)
+        pQueue.enqueue('lisa', 2)
+
+        const size = pQueue.size()
+        for (let index = 0; index < size; index++) {
+            const item = pQueue.dequeue()
+            console.log(item.data, item.priority)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../dist/altoria_utils.js"></script>
+    <script>
+        function Person(name, age) {
+            this.name = name
+            this.age = age
+        }
+
+        let p = new Person('Jack', 20)
+        // console.log(p.__proto__)   // 大写Function的原型
+        console.log(aUtils.myInstanceOf(p, Person))
+        console.log(aUtils.myInstanceOf(p, Object))
+        console.log(aUtils.myInstanceOf(p, Function))
+
+        console.log(aUtils.newInstance(Person, 'Tom', 18))
+        console.log(Person.prototype)
+    </script>
+</body>
+
+</html>

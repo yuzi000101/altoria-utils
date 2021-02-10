@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防抖与节流</title>
+</head>
+
+<body>
+
+    <button id="throttle">throttle</button>
+    <button id="debounce">debounce</button>
+
+    <!-- 
+           1.事件频繁触发可能造成问题？
+                1.一些浏览器事件：window.onresize \ window.mousemove等，触发的频率非常高，会造成浏览器性能问题
+                2.如果向后台发送请求，频繁触发，对服务器会造成不必要的压力
+            
+            2.如何限制事件处理函数频繁调用
+                1.函数节流
+                2.函数防抖
+    
+            3.函数节流（throttle）
+                1.理解：
+                    在函数需要频繁触发时：函数执行一次后，只有大于设定的执行周期后才会执行第二次
+                    适合多次事件按时间做平均分配触发
+                2.场景：
+                    窗口调整（resize）
+                    页面滚动（scroll）
+                    DOM元素的拖拽功能实现（mousemove）
+                    抢购疯狂点击（click）
+    
+            4.函数防抖（debounce）
+                1.理解：
+                    在函数需要频繁触发时：在规定时间内，只让最后一次生效，前面的不生效。
+                    适合多次事件一次响应的情况
+                2.场景
+                    输入框实时搜索联想（keyup/input）
+     -->
+
+    <script>
+        /* 用来返回节流函数的工具函数 */
+        function throttle(callback, delay) {
+            let pre = 0
+            return function (event) {  // 节流函数、真正的  事件回调函数  this是发生事件的DOM元素
+                const current = Date.now()
+                if (current - pre > delay) { //只有离上一次调用callback的时间差大于delay
+                    // 调用真正处理事件的函数，this是事件源，参数是event
+                    callback.call(this, event)
+                    // 记录此次调用的时间
+                    pre = current
+                }
+            }
+        }
+
+        /* 用来返回防抖函数的工具函数 */
+        function debounce(callback, delay) {
+            return function (event) {
+                // 如果上次事件还没有真正处理，取消它
+                // callback.timeoutId 会查找原型链
+                if (callback.hasOwnProperty('timeoutId')) {  //不会查找原型链
+                    clearTimeout(callback.timeoutId)
+                }
+
+                //发生指定事件后才会调用事件处理的回调函数
+                // 启动定时器，只是准备真正处理
+                callback.timeoutId = setTimeout(() => {  //将定时器标记绑定到事件处理函数上
+                    // 真正处理事件
+                    callback.call(this, event)
+                    // 删除准备处理的标记
+                    delete callback.timeoutId
+                }, delay)
+            }
+        }
+    </script>
+
+    <script>
+
+        function handleClick(event) {
+            console.log('处理事件回调函数', this, event)
+        }
+        
+        // document.getElementById('throttle').onclick = handleClick   
+        document.getElementById('throttle').onclick = throttle(handleClick, 2000)
+        document.getElementById('debounce').onclick = debounce(handleClick, 2000)   
+    </script>
+</body>
+
+</html>

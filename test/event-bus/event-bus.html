@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件总线</title>
+</head>
+
+<body>
+    <script src="../../dist/altoria_utils.js"></script>
+    <script>
+        aUtils.eventBus.on('login', (data) => {
+            console.log(`${data}登录成功`)
+        })
+        aUtils.eventBus.on('login', (data) => {
+            console.log(`${data}已登录`)
+        })
+        aUtils.eventBus.on('logout', (data) => {
+            console.log(`${data}登出`)
+        })
+        setTimeout(() => {
+            aUtils.eventBus.emit('login', 'Tom')
+        }, 2000)
+        console.log(aUtils.eventBus)
+        aUtils.eventBus.off('login')
+    </script>
+</body>
+
+</html>

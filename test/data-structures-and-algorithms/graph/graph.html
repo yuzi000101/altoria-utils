@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图结构</title>
+</head>
+
+<body>
+    <script src="../../../dist/altoria_utils.js"></script>
+    <script>
+        const graph = new aUtils.Graph()
+        const myVertexes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+        for (let i = 0; i < myVertexes.length; i++) {
+            graph.addVertex(myVertexes[i])
+        }
+        graph.addEdge('A', 'B')
+        graph.addEdge('A', 'C')
+        graph.addEdge('A', 'D')
+        graph.addEdge('C', 'D')
+        graph.addEdge('C', 'G')
+        graph.addEdge('D', 'G')
+        graph.addEdge('D', 'H')
+        graph.addEdge('B', 'E')
+        graph.addEdge('B', 'F')
+        graph.addEdge('E', 'I')
+
+        console.log(graph.toString())
+
+        let resultString = ''
+        graph.bfs(graph.vertexes[0], function (v) {
+            resultString += `${v} `
+        })
+        console.log(resultString)
+
+        resultString = ''
+        graph.dfs(graph.vertexes[0], function (v) {
+            resultString += `${v} `
+        })
+        console.log(resultString)
+
+    </script>
+</body>
+
+</html>

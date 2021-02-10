@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../../../dist/altoria_utils.js"></script>
+    <script>
+        /* 
+            渔夫三天打鱼两天晒网问题？
+                从1970年开始，渔夫每三天打鱼，两天晒网，至今日，它是打鱼还是晒网？
+        */
+        /* 
+            十进制转二进制
+        */
+        function dec2bin(decNum) {
+            const stack = new aUtils.Stack()
+
+            while (decNum > 0) {
+                const remainder = decNum % 2
+                stack.push(remainder)
+                decNum = Math.floor(decNum / 2)
+            }
+
+            let result = ''
+            while (!stack.isEmpty()) {
+                result += stack.pop()
+            }
+            return result
+        }
+
+        console.log(dec2bin(10))
+        console.log(dec2bin(233))
+
+        const str = 'abc'
+        console.log(str[0])
+    </script>
+
+</body>
+
+</html>

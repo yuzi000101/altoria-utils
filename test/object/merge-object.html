@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=x, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../dist/altoria_utils.js"></script>
+    <script>
+        const obj1 = { a: [{ x: 2 }, { y: 4 }], b: 1 }
+        const obj2 = { a: { z: 3 }, b: [2, 3], c: 'foo' }
+        console.log(aUtils.mergeObject(obj1, obj2))
+    </script>
+</body>
+
+</html>

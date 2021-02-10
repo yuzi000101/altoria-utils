@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>集合</title>
+</head>
+
+<body>
+    <script src="../../../dist/altoria_utils.js"></script>
+    <script>
+        let setA = new aUtils.Set()
+        setA.add('a')
+        setA.add('b')
+        setA.add('c')
+        let setB = new aUtils.Set()
+        setB.add('d')
+        setB.add('a')
+        setB.add('b')
+
+        console.log(setA.items)
+        console.log(setA.values())
+
+        console.log(setA.union(setB))
+        console.log(setA.intersection(setB))
+    </script>
+</body>
+
+</html>

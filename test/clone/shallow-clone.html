@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../dist/altoria_utils.js"></script>
+    <script>
+        const obj1 = { x: 'acb', y: { m: 1 } }
+        const obj2 = aUtils.clone1(obj1)
+        console.log(obj2, obj1 === obj2, obj1.y === obj2.y)
+
+        const obj3 = ['acb', { m: 1 }]
+        const obj4 = aUtils.clone2(obj3)
+        console.log(obj4, obj3 === obj4, obj3[1] === obj4[1])
+    </script>
+</body>
+
+</html>

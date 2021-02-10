@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单向链表</title>
+</head>
+
+<body>
+    <script src="../../../dist/altoria_utils.js"></script>
+    <script>
+
+        let list = new aUtils.LinkedList()
+        list.append('a')
+        list.append('b')
+        list.append('c')
+        list.append('d')
+        console.log(list.toString())
+
+        list.insert('aaa', 0)
+        list.insert('ccc', 3)
+        console.log(list.toString())
+
+        console.log(list.get(3))
+
+        console.log(list.indexOf('aaa'))
+        console.log(list.indexOf('ccc'))
+
+        console.log('得到最后一个元素', list.get(5))
+        console.log(list.update(5, 'ddd'))
+        console.log('得到最后一个元素', list.get(5))
+
+        console.log(list.removeAt(0))
+        console.log(list.toString())
+        console.log(list.removeAt(4))
+        console.log(list.toString())
+        console.log(list.remove('a'))
+        console.log(list.remove('c'))
+        console.log(list.toString())
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script src="../../../dist/altoria_utils.js"></script>
+    <script>
+
+        /* 
+            实现击鼓传花
+        */
+
+        function passGame(arr, num) {
+            let queue = new aUtils.Queue()
+            // 将准备好的元素依次插入队列
+            arr.forEach((item, index) => {
+                queue.enqueue({ item, index })
+            })
+
+            while (queue.size() > 1) {
+                for (let index = 0; index < num - 1; index++) {
+                    //将队列中前num - 1个元素插入到队尾
+                    queue.enqueue(queue.dequeue())
+                }
+                // 删除对头的元素
+                queue.dequeue()
+            }
+            // 查看对头，得到元素
+            const { item, index } = queue.front()
+
+            alert(`胜利者是${item},位置是${index + 1}`)
+        }
+
+        const arr = ['A', 'B', 'C', 'D', 'E', 'F']
+        passGame(arr, 4)
+    </script>
+
+</body>
+
+</html>

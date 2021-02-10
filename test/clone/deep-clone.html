@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../dist/altoria_utils.js"></script>
+    <script>
+
+        const obj1 = {
+            a: 1,
+            b: ['a', 'b', 'c'],
+            c: { h: { i: 2 } },
+            d: function () { }
+        }
+
+
+        // 循环引用
+        obj1.b.push(obj1.c)
+        obj1.c.j = obj1.b
+        console.log(obj1)
+
+        // const objClone1 = aUtils.deepClone1(obj1)
+
+        const obj1Clone = aUtils.deepClone3(obj1)
+
+        console.log(obj1Clone, obj1Clone.b === obj1.b, obj1Clone.c === obj1.c)
+
+    </script>
+
+</body>
+
+</html>

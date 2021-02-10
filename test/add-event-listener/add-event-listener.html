@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件绑定</title>
+</head>
+
+<body>
+    <ul id="test">
+        <li>aaa</li>
+        <li>bbb</li>
+        <li>ccc</li>
+        <div>ddd</div>
+    </ul>
+    <script src="../../dist/altoria_utils.js"></script>
+    <script>
+        aUtils.addEventListener('#test', 'click', function () {
+            console.log(this.innerHTML)
+        },'div')
+    </script>
+</body>
+
+</html>

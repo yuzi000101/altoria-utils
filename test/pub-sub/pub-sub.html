@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消息订阅与发布</title>
+</head>
+
+<body>
+    <script src="../../dist/altoria_utils.js"></script>
+    <script>
+        const pid = aUtils.PubSub.subscribe('pay', (data) => {
+            console.log('订阅消息1')
+        })
+        aUtils.PubSub.subscribe('pay', (data) => {
+            console.log('订阅消息2')
+        })
+        aUtils.PubSub.subscribe('cancel', (data) => {
+            console.log('订阅消息3')
+        })
+
+        aUtils.PubSub.publish('pay', {
+            title: '发布消息1'
+        })
+        aUtils.PubSub.unsubscribe('pay')
+        console.log(aUtils.PubSub)
+    </script>
+</body>
+
+</html>
